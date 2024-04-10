@@ -27,7 +27,7 @@
   	],
   	"extensionPack": [
   	  	"sumneko.lua",
-  	  	"actboy168.lua-debug"
+  	  	"actboy168.lua-debug":"1.61.0"
   	],
   	"main": "./out/extension.js",
   	"contributes": {
