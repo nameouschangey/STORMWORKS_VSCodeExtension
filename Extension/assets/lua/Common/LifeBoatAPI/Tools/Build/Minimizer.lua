@@ -143,8 +143,8 @@ LifeBoatAPI.Tools.Minimizer = {
         local sizeWithoutBoilerplate = #text
 
         local nameousBoilerplateSize = 233 + #tostring(sizeWithoutBoilerplate) + #tostring(#text)
-        local predictedBoilerplateSize = ((this.params.forceNCBoilerplate or (#text + #boilerplate + nameousBoilerplateSize < 4000)) and nameousBoilerplateSize + #boilerplate) 
-                                       or ((this.params.forceBoilerplate or (#text + #boilerplate < 4000)) and #boilerplate)
+        local predictedBoilerplateSize = ((this.params.forceNCBoilerplate or (#text + #boilerplate + nameousBoilerplateSize < 8000)) and nameousBoilerplateSize + #boilerplate) 
+                                       or ((this.params.forceBoilerplate or (#text + #boilerplate < 8000)) and #boilerplate)
                                        or 0
 
         -- add boilerplate if the file is small enough
@@ -158,9 +158,9 @@ LifeBoatAPI.Tools.Minimizer = {
 
         local addedSpacing = not this.params.removeComments and "\n\n" or ""
         -- add boilerplate if the file is small enough (4000 chars instead of 4096, gives some slight wiggle room)
-        if(this.params.forceNCBoilerplate or (#text + #boilerplate + #nameousBoilerplate < 4000)) then
+        if(this.params.forceNCBoilerplate or (#text + #boilerplate + #nameousBoilerplate < 8000)) then
             text = boilerplate .. "--\n" .. nameousBoilerplate .. "\n" .. addedSpacing .. text
-        elseif(this.params.forceBoilerplate or #text + #boilerplate < 4000) then
+        elseif(this.params.forceBoilerplate or #text + #boilerplate < 8000) then
             text = boilerplate .. "\n" .. addedSpacing .. text
         end
 
